@@ -28,6 +28,9 @@
   <div class="container">
     <section class="overlay">
       <?php
+      if ($_SESSION['admin']=='false'):
+      ?>
+      <?php
         require_once "../db/connection.php";
 
         $sql = "SELECT id, first_name, last_name, email, role_id FROM users WHERE id=".$_GET['id'];
@@ -56,14 +59,52 @@
           }
         }
       ?>
+      <?php endif?>
       <?php
       if ($_SESSION['admin']=='true'):
       ?>
-        <br>
-        <nav class="my-2 my-md-0 mr-md-3">
-            <input id="submit" class="btn btn-primary" name="submit" type="submit" value="Edit">
-            <a class="btn btn-danger" href="">Delete</a>
-        </nav>
+        <?php
+          require_once "../db/connection.php";
+          $sql_user = "SELECT id, first_name, last_name, email, password, role_id FROM users WHERE id=".$_GET['id'];
+          $result_user = $conn->query($sql_user);
+
+          if ($result_user->num_rows > 0) {
+              while($row_user = $result_user->fetch_assoc()) { ?>
+                <h3>Account info</h3>
+                <form action="../edit_delete.php" method="post">
+                  <label for="id">Id:</label>
+                  <br>
+                  <input id="id" class="form-control" name="id" type="text" value="<?php echo $row_user['id']; ?>" minlength="1" maxlength="20">
+                  <br>
+                  <label for="first_name">First name:</label>
+                  <br>
+                  <input id="first_name" class="form-control" name="first_name" type="text" value="<?php echo $row_user['first_name']; ?>" minlength="2" maxlength="20" pattern="[a-zA-Z]+">
+                  <br>
+                  <label for="last_name">Last name:</label>
+                  <br>
+                  <input id="last_name" class="form-control" name="last_name" type="text" value="<?php echo $row_user["last_name"]; ?>" minlength="2" maxlength="20" pattern="[a-zA-Z]+">
+                  <br>
+                  <label for="pass">Password:</label>
+                  <br>
+                  <input id="pass" class="form-control" name="pass" type="text" value="<?php echo $row_user["password"]; ?>" minlength="6" maxlength="32">
+                  <br>
+                  <label for="email">Email:</label>
+                  <br>
+                  <input id="email" class="form-control" name="email" type="text" value="<?php echo $row_user["email"]; ?>"minlength="6" maxlength="32">
+                  <br>
+                  <label for="role_id">Role id:</label>
+                  <br>
+                  <input id="role_id" class="form-control" name="role_id" type="text" value="<?php echo $row_user["role_id"]; ?>"minlength="6" maxlength="32">
+                  <br><br>
+                  <nav class="my-2 my-md-0 mr-md-3">
+                      <input id="submit" class="btn btn-primary" name="edit" type="submit" value="Edit">
+                      <input id="submit" class="btn btn-danger" name="delete" type="submit" value="Delete">
+                  </nav>
+                </form>
+                <?php
+              }
+          }
+        ?>
       <?php endif?>
 
     </section>

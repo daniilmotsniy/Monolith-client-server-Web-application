@@ -18,12 +18,13 @@
   <title>User page</title>
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/table.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
 <header>
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-    <h5 class="my-0 mr-md-auto font-weight-normal">Your account info</h5>
+    <h5 class="my-0 mr-md-auto font-weight-normal">Logo</h5>
       <nav class="my-2 my-md-0 mr-md-3">
           <a class="btn btn-outline-primary" href="/pages/user.php?id=<?php echo $_GET['id']; ?>"><?php echo $name; ?></a>
           <a class="btn btn-outline-danger" href="../logout.php">Sign Out</a>
@@ -31,6 +32,15 @@
   </div>
 </header>
 <div class="container">
+    <h3>Famous users</h3>
+    <table id="users_table">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
     <?php
     if ($_SESSION["auth"]=='true'):
     ?>
@@ -62,6 +72,7 @@
         }
       }
     ?>
+      </table>
     <br>
     <a class="btn btn-outline-primary" href="/pages/add_user.php?id=<?php echo $_GET['id']; ?>">Add user</a>
     <?php

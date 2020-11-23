@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Main page</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/table.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <body>
@@ -49,6 +50,14 @@
   <div class="container">
     <section class="overlay">
         <h3>Famous users</h3>
+        <table id="users_table">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
         <?php
         require_once "../db/connection.php";
         $sql = "SELECT id, first_name, last_name, email, role_id FROM users";
@@ -67,6 +76,7 @@
                 echo $row['id'];
               ?>
               </a>
+
         <?php
               echo "</td>";
               echo "<td>".$row['first_name']." "."</td>";
@@ -77,6 +87,7 @@
             }
           }
         ?>
+              </table>
     </section>
   </div>
 </body>
