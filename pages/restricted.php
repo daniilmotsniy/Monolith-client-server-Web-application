@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE>
 <html>
 <head>
@@ -12,17 +13,36 @@
   <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">Your account info</h5>
       <nav class="my-2 my-md-0 mr-md-3">
-          <a class="btn btn-outline-danger" href="/">Return</a>
+          <a class="btn btn-outline-primary" href="/pages/user.php"><?php echo $_SESSION["first_name"]; ?></a>
+          <a class="btn btn-outline-danger" href="../logout.php">Sign Out</a>
       </nav>
   </div>
 </header>
 <div class="container">
     <?php
-    session_start();
     if ($_SESSION["auth"]=='true'):
     ?>
-        <h3>You are signed in!</h3>
-        <br>
+    <?php
+      require_once "../db/connection.php";
+
+      $sql = "SELECT id, first_name, last_name, email, role_id FROM users";
+
+      $result = $conn->query($sql);
+
+      if ($result->num_rows > 0) {
+          // output data of each row
+          while($row = $result->fetch_assoc()) {
+            echo "<tr>";
+              echo "<td>".$row['id']." "."</td>";
+              echo "<td>".$row['first_name']." "."</td>";
+              echo "<td>".$row['last_name']." "."</td>";
+              echo "<td>".$row['email']." "."</td>";
+              echo "<td>".$row['role_id']." "."</td>";
+            echo "</tr><br>";
+
+        }
+      }
+    ?>
     <?php
     else:
     ?>
