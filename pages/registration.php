@@ -9,7 +9,7 @@
 <body>
   <header>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <a class="my-0 mr-md-auto font-weight-normal btn btn-info" href="/">Main</a>
+        <a class="my-0 mr-md-auto font-weight-normal btn btn-outline-primary" href="/">Back</a>
         <nav class="my-2 my-md-0 mr-md-3">
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">Log In</button>
             <a class="btn btn-outline-primary" href="/pages/registration.php">Sign Up</a>
@@ -37,7 +37,7 @@
                     <input id="pass" class="form-control" name="pass" type="password" required minlength="3" maxlength="20">
                     <br><br>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <input id="submit" class="btn btn btn-primary" name="submit" type="submit" value="Submit">
+                    <input id="submit" class="btn btn-primary" name="submit" type="submit" value="Submit">
                   </form>
               </section>
             </div>
@@ -63,7 +63,8 @@
           <select class="form-control" id="role_id" name="role_id" required>
                 <option>0</option>
                 <option>1</option>
-          </select><br>
+          </select>
+          <br>
           <label for="login">Email:</label>
           <br>
           <input id="email" class="form-control" name="email" type="email" required minlength="3" maxlength="32">

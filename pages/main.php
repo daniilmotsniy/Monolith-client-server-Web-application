@@ -51,7 +51,6 @@
         <h3>Famous users</h3>
         <?php
         require_once "../db/connection.php";
-
         $sql = "SELECT id, first_name, last_name, email, role_id FROM users";
 
         $result = $conn->query($sql);
@@ -59,16 +58,24 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-              echo "<tr>";
-                echo "<td>".$row['id']." "."</td>";
-                echo "<td>".$row['first_name']." "."</td>";
-                echo "<td>".$row['last_name']." "."</td>";
-                echo "<td>".$row['email']." "."</td>";
-                echo "<td>".$row['role_id']." "."</td>";
+                echo "<tr>";
+                echo "<td>";
+                $url = "/pages/user_view.php?id=".$row['id'];
+        ?>
+              <a href="<?php echo $url; ?>".php">
+              <?php
+                echo $row['id'];
+              ?>
+              </a>
+        <?php
+              echo "</td>";
+              echo "<td>".$row['first_name']." "."</td>";
+              echo "<td>".$row['last_name']." "."</td>";
+              echo "<td>".$row['email']." "."</td>";
+              echo "<td>".$row['role_id']." "."</td>";
               echo "</tr><br>";
-
-        	}
-        }
+            }
+          }
         ?>
     </section>
   </div>

@@ -62,6 +62,8 @@
         }
       }
     ?>
+    <br>
+    <a class="btn btn-outline-primary" href="/pages/add_user.php?id=<?php echo $_GET['id']; ?>">Add user</a>
     <?php
     else:
     ?>
