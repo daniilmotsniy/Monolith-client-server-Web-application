@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Registration</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <body>
   <header>
@@ -58,7 +57,7 @@
           <br>
           <input id="last_name" class="form-control" name="last_name" type="text" required minlength="2" maxlength="20" pattern="[a-zA-Z]+">
           <br>
-          <label for="role_id">Id role:</label>
+          <label for="role_id">Id role (0 - user, 1 - admin):</label>
           <br>
           <select class="form-control" id="role_id" name="role_id" required>
                 <option>0</option>
@@ -75,10 +74,13 @@
           <br>
           <label for="pass_rep">Repeat password:</label>
           <br>
-          <input id="pass_rep" class="form-control" name="pass" type="password" required minlength="6" maxlength="32">
+            <input id="pass_rep" class="form-control" type="password" name="pass_rep" required minlength="6" maxlength="32">
           <br><br>
           <input id="submit" class="btn btn-lg btn-primary" name="submit" type="submit" value="Submit">
         </form>
     </section>
   </div>
 </body>
+<script src="../assets/js/password_valid.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</html>

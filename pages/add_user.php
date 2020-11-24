@@ -24,7 +24,7 @@
           <br>
           <input id="last_name" class="form-control" name="last_name" type="text" required minlength="2" maxlength="20" pattern="[a-zA-Z]+">
           <br>
-          <label for="role_id">Id role:</label>
+          <label for="role_id">Id role (0 - user, 1 - admin):</label>
           <br>
           <select class="form-control" id="role_id" name="role_id" required>
                 <option>0</option>

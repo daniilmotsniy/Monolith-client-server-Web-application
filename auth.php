@@ -19,5 +19,6 @@
           break;
       } else {
           $_SESSION['auth'] = 'false';
+          header("Location: pages/main.php?login=false");
       }
   }

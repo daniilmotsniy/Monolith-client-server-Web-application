@@ -49,6 +49,11 @@
   </header>
   <div class="container">
     <section class="overlay">
+        <h4 style="color: red;"><?php
+          if(!empty($_GET['login']) && $_GET['login']=='false'){
+            echo "Your password or login is not correct!";
+          }
+        ?></h4>
         <h3>Famous users</h3>
         <table id="users_table">
         <tr>
@@ -60,7 +65,7 @@
         </tr>
         <?php
         require_once "../db/connection.php";
-        $sql = "SELECT id, first_name, last_name, email, role_id FROM users";
+        $sql = "SELECT *  FROM users u LEFT JOIN roles r ON u.role_id = r.id_";
 
         $result = $conn->query($sql);
 
@@ -82,12 +87,13 @@
               echo "<td>".$row['first_name']." "."</td>";
               echo "<td>".$row['last_name']." "."</td>";
               echo "<td>".$row['email']." "."</td>";
-              echo "<td>".$row['role_id']." "."</td>";
+              echo "<td>".$row['title']." "."</td>";
               echo "</tr><br>";
             }
           }
         ?>
               </table>
+              <br><br>
     </section>
   </div>
 </body>

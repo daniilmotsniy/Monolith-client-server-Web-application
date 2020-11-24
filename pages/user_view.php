@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>Registration</title>
+  <title>User info</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -33,7 +33,7 @@
       <?php
         require_once "../db/connection.php";
 
-        $sql = "SELECT id, first_name, last_name, email, role_id FROM users WHERE id=".$_GET['id'];
+        $sql = "SELECT * FROM users u LEFT JOIN roles r ON u.role_id = r.id_ WHERE u.id=".$_GET['id'];
 
         $result = $conn->query($sql);
 
@@ -54,7 +54,7 @@
                 echo "<td>".$row['email']." "."</td>";
                 echo "<br>";
                 echo "Role id: ";
-                echo "<td>".$row['role_id']." "."</td>";
+                echo "<td>".$row['title']." "."</td>";
               echo "</tr><br>";
           }
         }
@@ -65,7 +65,7 @@
       ?>
         <?php
           require_once "../db/connection.php";
-          $sql_user = "SELECT id, first_name, last_name, email, password, role_id FROM users WHERE id=".$_GET['id'];
+          $sql_user = "SELECT * FROM users u LEFT JOIN roles r ON u.role_id = r.id_ WHERE u.id=".$_GET['id'];
           $result_user = $conn->query($sql_user);
 
           if ($result_user->num_rows > 0) {
@@ -92,9 +92,9 @@
                   <br>
                   <input id="email" class="form-control" name="email" type="text" value="<?php echo $row_user["email"]; ?>"minlength="6" maxlength="32">
                   <br>
-                  <label for="role_id">Role id:</label>
+                  <label for="role_id">Role id (0 - user, 1 - admin):</label>
                   <br>
-                  <input id="role_id" class="form-control" name="role_id" type="text" value="<?php echo $row_user["role_id"]; ?>"minlength="6" maxlength="32">
+                  <input id="role_id" class="form-control" name="role_id" type="text" value="<?php echo $row_user["role_id"]; ?>"minlength="1" maxlength="1">
                   <br><br>
                   <nav class="my-2 my-md-0 mr-md-3">
                       <input id="submit" class="btn btn-primary" name="edit" type="submit" value="Edit">

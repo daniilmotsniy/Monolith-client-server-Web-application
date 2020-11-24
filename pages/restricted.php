@@ -46,7 +46,7 @@
     ?>
     <?php
     require_once "../db/connection.php";
-    $sql = "SELECT id, first_name, last_name, email, role_id FROM users";
+    $sql = "SELECT * FROM users u LEFT JOIN roles r ON u.role_id = r.id_";
 
     $result = $conn->query($sql);
 
@@ -67,7 +67,7 @@
           echo "<td>".$row['first_name']." "."</td>";
           echo "<td>".$row['last_name']." "."</td>";
           echo "<td>".$row['email']." "."</td>";
-          echo "<td>".$row['role_id']." "."</td>";
+          echo "<td>".$row['title']." "."</td>";
           echo "</tr><br>";
         }
       }
