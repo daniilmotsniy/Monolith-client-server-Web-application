@@ -4,6 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Account</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="../assets/css/photo.css">
 <body>
   <header>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -33,7 +34,8 @@
           if ($result_user->num_rows > 0) {
               while($row_user = $result_user->fetch_assoc()) { ?>
                 <h3>Account info</h3><br>
-                <img src="../public/images/<?php echo $row_user['photo']; ?>" class="rounded" alt="This is place for your photo">
+                <img src="../public/images/<?php echo $row_user['photo']; ?>" style="width: 150px; height: 150px; object-fit:cover;
+" class="rounded" alt="This is place for your photo">
                 <form action="../upload.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
                   <br> Select image to upload:<br><br>
                   <div class="custom-file">
